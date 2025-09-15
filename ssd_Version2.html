@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>SSD: Funzionamento e Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .quiz { margin-top: 2em; padding: 1em; background: #f2f2f2; border-radius: 8px; }
+    .correct { color: green; }
+    .wrong { color: red; }
+    button { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Cos'è un SSD?</h1>
+  <p>
+    Un <b>SSD</b> (Solid State Drive) è un dispositivo di memoria che utilizza chip di memoria flash per archiviare dati, senza parti meccaniche in movimento.
+  </p>
+  <h2>Caratteristiche principali</h2>
+  <ul>
+    <li>Maggiore velocità di lettura/scrittura rispetto agli HDD</li>
+    <li>Nessuna parte meccanica in movimento</li>
+    <li>Minore suscettibilità ai danni da urto</li>
+  </ul>
+
+  <div class="quiz">
+    <h2>Quiz: Verifica le tue conoscenze</h2>
+    <form id="quiz-ssd">
+      <p>Quale vantaggio ha un SSD rispetto a un HDD?</p>
+      <input type="radio" name="ssdq" value="1"> Ha parti meccaniche più resistenti<br>
+      <input type="radio" name="ssdq" value="2"> È più veloce nell'accesso ai dati<br>
+      <input type="radio" name="ssdq" value="3"> Ha una capacità inferiore<br>
+      <button type="button" onclick="checkSSD()">Verifica</button>
+      <p id="ssd-result"></p>
+    </form>
+  </div>
+
+  <script>
+    function checkSSD() {
+      const radios = document.getElementsByName('ssdq');
+      let selected = null;
+      for (const r of radios) if (r.checked) selected = r.value;
+      const res = document.getElementById('ssd-result');
+      if (selected === "2") {
+        res.textContent = "Corretto! Gli SSD sono più veloci degli HDD.";
+        res.className = "correct";
+      } else if (selected) {
+        res.textContent = "Risposta errata. Riprova!";
+        res.className = "wrong";
+      } else {
+        res.textContent = "Seleziona una risposta.";
+        res.className = "";
+      }
+    }
+  </script>
+</body>
+</html>

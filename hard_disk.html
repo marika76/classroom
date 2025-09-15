@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Hard Disk: Funzionamento e Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .quiz { margin-top: 2em; padding: 1em; background: #f2f2f2; border-radius: 8px; }
+    .correct { color: green; }
+    .wrong { color: red; }
+    button { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Cos'è un Hard Disk?</h1>
+  <p>
+    Un <b>Hard Disk Drive</b> (HDD) è un dispositivo di memoria di massa che utilizza dischi magnetici rotanti per archiviare dati. Ogni disco ruota a velocità elevata e una testina legge/scrive le informazioni tramite magnetismo.
+  </p>
+  <h2>Caratteristiche principali</h2>
+  <ul>
+    <li>Capacità elevate a costi contenuti</li>
+    <li>Parti meccaniche in movimento (dischi e testine)</li>
+    <li>Velocità di accesso inferiore rispetto agli SSD</li>
+  </ul>
+
+  <div class="quiz">
+    <h2>Quiz: Verifica le tue conoscenze</h2>
+    <form id="quiz-hdd">
+      <p>Quale tra queste è una caratteristica degli Hard Disk?</p>
+      <input type="radio" name="hddq" value="1"> Utilizzano dischi magnetici rotanti<br>
+      <input type="radio" name="hddq" value="2"> Sono completamente privi di parti mobili<br>
+      <input type="radio" name="hddq" value="3"> Sono più veloci degli SSD<br>
+      <button type="button" onclick="checkHDD()">Verifica</button>
+      <p id="hdd-result"></p>
+    </form>
+  </div>
+
+  <script>
+    function checkHDD() {
+      const radios = document.getElementsByName('hddq');
+      let selected = null;
+      for (const r of radios) if (r.checked) selected = r.value;
+      const res = document.getElementById('hdd-result');
+      if (selected === "1") {
+        res.textContent = "Corretto! Gli hard disk usano dischi magnetici rotanti.";
+        res.className = "correct";
+      } else if (selected) {
+        res.textContent = "Risposta errata. Riprova!";
+        res.className = "wrong";
+      } else {
+        res.textContent = "Seleziona una risposta.";
+        res.className = "";
+      }
+    }
+  </script>
+</body>
+</html>
