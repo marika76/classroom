@@ -2,55 +2,151 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>SSD: Funzionamento e Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SSD - Interattivo & Confronto</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    .quiz { margin-top: 2em; padding: 1em; background: #f2f2f2; border-radius: 8px; }
-    .correct { color: green; }
-    .wrong { color: red; }
-    button { margin-top: 1em; }
+    .animated-icon {
+      animation: bounce 2s infinite;
+      display: inline-block;
+      font-size: 48px;
+      color: #198754;
+      margin-right: 15px;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-10px);}
+    }
+    .quiz-feedback {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .confronto-table tr th, .confronto-table tr td {
+      text-align: center;
+      vertical-align: middle;
+    }
   </style>
 </head>
-<body>
-  <h1>Cos'è un SSD?</h1>
-  <p>
-    Un <b>SSD</b> (Solid State Drive) è un dispositivo di memoria che utilizza chip di memoria flash per archiviare dati, senza parti meccaniche in movimento.
-  </p>
-  <h2>Caratteristiche principali</h2>
-  <ul>
-    <li>Maggiore velocità di lettura/scrittura rispetto agli HDD</li>
-    <li>Nessuna parte meccanica in movimento</li>
-    <li>Minore suscettibilità ai danni da urto</li>
-  </ul>
+<body class="bg-light">
 
-  <div class="quiz">
-    <h2>Quiz: Verifica le tue conoscenze</h2>
-    <form id="quiz-ssd">
-      <p>Quale vantaggio ha un SSD rispetto a un HDD?</p>
-      <input type="radio" name="ssdq" value="1"> Ha parti meccaniche più resistenti<br>
-      <input type="radio" name="ssdq" value="2"> È più veloce nell'accesso ai dati<br>
-      <input type="radio" name="ssdq" value="3"> Ha una capacità inferiore<br>
-      <button type="button" onclick="checkSSD()">Verifica</button>
-      <p id="ssd-result"></p>
-    </form>
+  <div class="container py-4">
+    <header class="mb-4">
+      <h1>
+        <span class="animated-icon">💾</span>
+        SSD (Solid State Drive)
+      </h1>
+      <p class="lead">
+        L'SSD è un dispositivo di memoria elettronica che memorizza dati in chip di memoria flash, senza parti meccaniche in movimento.
+      </p>
+    </header>
+
+    <section class="mb-4">
+      <h2>Come funziona?</h2>
+      <div class="row">
+        <div class="col-md-7">
+          <p>
+            Un SSD salva i dati su celle di memoria flash, simili a quelle utilizzate nelle chiavette USB. Non avendo parti meccaniche è più veloce, silenzioso e resistente agli urti rispetto agli HDD.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/3B4g8jQvXto" title="Come funziona un SSD" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h2>Quiz interattivo</h2>
+      <form id="quiz-ssd">
+        <div class="mb-3">
+          <label for="q1" class="form-label">Qual è il vantaggio principale degli SSD rispetto agli HDD?</label>
+          <select class="form-select" id="q1">
+            <option value="">Scegli...</option>
+            <option value="velocita">Maggiore velocità</option>
+            <option value="meccanica">Più parti meccaniche</option>
+            <option value="rumore">Più rumorosi</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="q2" class="form-label">Gli SSD sono più sensibili agli urti rispetto agli HDD?</label>
+          <select class="form-select" id="q2">
+            <option value="">Scegli...</option>
+            <option value="no">No, sono più resistenti</option>
+            <option value="si">Sì, sono più sensibili</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-success" onclick="valutaQuizSSD()">Verifica risposte</button>
+        <div id="quiz-feedback-ssd" class="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <section class="mb-4">
+      <h2>Confronto: SSD vs HDD</h2>
+      <table class="table table-bordered confronto-table bg-white">
+        <thead>
+          <tr>
+            <th></th>
+            <th>SSD</th>
+            <th>HDD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Principio di funzionamento</td>
+            <td>Elettronico, memoria flash</td>
+            <td>Magnetico, piatti rotanti</td>
+          </tr>
+          <tr>
+            <td>Velocità</td>
+            <td>Alta</td>
+            <td>Media-bassa</td>
+          </tr>
+          <tr>
+            <td>Resistenza agli urti</td>
+            <td>Alta</td>
+            <td>Bassa</td>
+          </tr>
+          <tr>
+            <td>Prezzo</td>
+            <td>Più costosi</td>
+            <td>Più economici</td>
+          </tr>
+          <tr>
+            <td>Capacità</td>
+            <td>Elevata</td>
+            <td>Molto elevata</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href="hard_disk.html" class="btn btn-outline-success">Scopri di più sugli HDD</a>
+      </p>
+    </section>
+
+    <footer class="mt-5 text-center text-muted">
+      &copy; 2025 - Pagina didattica interattiva | <a href="hard_disk.html">HDD</a>
+    </footer>
   </div>
 
   <script>
-    function checkSSD() {
-      const radios = document.getElementsByName('ssdq');
-      let selected = null;
-      for (const r of radios) if (r.checked) selected = r.value;
-      const res = document.getElementById('ssd-result');
-      if (selected === "2") {
-        res.textContent = "Corretto! Gli SSD sono più veloci degli HDD.";
-        res.className = "correct";
-      } else if (selected) {
-        res.textContent = "Risposta errata. Riprova!";
-        res.className = "wrong";
+    function valutaQuizSSD() {
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+      let feedback = '';
+      let punteggio = 0;
+
+      if (q1 === 'velocita') punteggio++;
+      if (q2 === 'no') punteggio++;
+
+      if (punteggio === 2) {
+        feedback = 'Ottimo! Tutte le risposte sono corrette! ✅';
+      } else if (punteggio === 1) {
+        feedback = 'Hai risposto correttamente a una domanda! 💡';
       } else {
-        res.textContent = "Seleziona una risposta.";
-        res.className = "";
+        feedback = 'Riprova! Le risposte non sono corrette. 🔄';
       }
+      document.getElementById('quiz-feedback-ssd').textContent = feedback;
     }
   </script>
 </body>
