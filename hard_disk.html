@@ -2,55 +2,152 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Hard Disk: Funzionamento e Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hard Disk (HDD) - Interattivo & Confronto</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    .quiz { margin-top: 2em; padding: 1em; background: #f2f2f2; border-radius: 8px; }
-    .correct { color: green; }
-    .wrong { color: red; }
-    button { margin-top: 1em; }
+    .animated-icon {
+      animation: spin 4s linear infinite;
+      display: inline-block;
+      font-size: 48px;
+      color: #0d6efd;
+      margin-right: 15px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .quiz-feedback {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .confronto-table tr th, .confronto-table tr td {
+      text-align: center;
+      vertical-align: middle;
+    }
   </style>
 </head>
-<body>
-  <h1>Cos'è un Hard Disk?</h1>
-  <p>
-    Un <b>Hard Disk Drive</b> (HDD) è un dispositivo di memoria di massa che utilizza dischi magnetici rotanti per archiviare dati. Ogni disco ruota a velocità elevata e una testina legge/scrive le informazioni tramite magnetismo.
-  </p>
-  <h2>Caratteristiche principali</h2>
-  <ul>
-    <li>Capacità elevate a costi contenuti</li>
-    <li>Parti meccaniche in movimento (dischi e testine)</li>
-    <li>Velocità di accesso inferiore rispetto agli SSD</li>
-  </ul>
+<body class="bg-light">
 
-  <div class="quiz">
-    <h2>Quiz: Verifica le tue conoscenze</h2>
-    <form id="quiz-hdd">
-      <p>Quale tra queste è una caratteristica degli Hard Disk?</p>
-      <input type="radio" name="hddq" value="1"> Utilizzano dischi magnetici rotanti<br>
-      <input type="radio" name="hddq" value="2"> Sono completamente privi di parti mobili<br>
-      <input type="radio" name="hddq" value="3"> Sono più veloci degli SSD<br>
-      <button type="button" onclick="checkHDD()">Verifica</button>
-      <p id="hdd-result"></p>
-    </form>
+  <div class="container py-4">
+    <header class="mb-4">
+      <h1>
+        <span class="animated-icon">💽</span>
+        Hard Disk (HDD)
+      </h1>
+      <p class="lead">
+        Il disco rigido (HDD) è un dispositivo di memoria magnetica utilizzato per memorizzare permanentemente dati e programmi. 
+      </p>
+    </header>
+
+    <section class="mb-4">
+      <h2>Come funziona?</h2>
+      <div class="row">
+        <div class="col-md-7">
+          <p>
+            Un HDD salva dati su piatti magnetici che ruotano ad alta velocità. Una testina magnetica legge e scrive i dati mentre i piatti girano. 
+            Gli HDD sono tradizionalmente usati nei computer per la loro grande capacità e costi contenuti.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/LW2FVI4h6yE" title="Come funziona un Hard Disk" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h2>Quiz interattivo</h2>
+      <form id="quiz-hdd">
+        <div class="mb-3">
+          <label for="q1" class="form-label">Qual è il principio di funzionamento degli HDD?</label>
+          <select class="form-select" id="q1">
+            <option value="">Scegli...</option>
+            <option value="magnetico">Memorizzazione magnetica su piatti rotanti</option>
+            <option value="ottico">Laser su disco ottico</option>
+            <option value="flash">Memoria flash elettronica</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="q2" class="form-label">Gli HDD sono più veloci degli SSD?</label>
+          <select class="form-select" id="q2">
+            <option value="">Scegli...</option>
+            <option value="no">No, sono più lenti</option>
+            <option value="si">Sì, sono più veloci</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="valutaQuiz()">Verifica risposte</button>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <section class="mb-4">
+      <h2>Confronto: HDD vs SSD</h2>
+      <table class="table table-bordered confronto-table bg-white">
+        <thead>
+          <tr>
+            <th></th>
+            <th>HDD</th>
+            <th>SSD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Principio di funzionamento</td>
+            <td>Magnetico, piatti rotanti</td>
+            <td>Elettronico, memoria flash</td>
+          </tr>
+          <tr>
+            <td>Velocità</td>
+            <td>Media-bassa</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>Resistenza agli urti</td>
+            <td>Bassa</td>
+            <td>Alta</td>
+          </tr>
+          <tr>
+            <td>Prezzo</td>
+            <td>Più economici</td>
+            <td>Più costosi</td>
+          </tr>
+          <tr>
+            <td>Capacità</td>
+            <td>Molto elevata</td>
+            <td>Elevata</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href="ssd.html" class="btn btn-outline-primary">Scopri di più sugli SSD</a>
+      </p>
+    </section>
+
+    <footer class="mt-5 text-center text-muted">
+      &copy; 2025 - Pagina didattica interattiva | <a href="ssd.html">SSD</a>
+    </footer>
   </div>
 
   <script>
-    function checkHDD() {
-      const radios = document.getElementsByName('hddq');
-      let selected = null;
-      for (const r of radios) if (r.checked) selected = r.value;
-      const res = document.getElementById('hdd-result');
-      if (selected === "1") {
-        res.textContent = "Corretto! Gli hard disk usano dischi magnetici rotanti.";
-        res.className = "correct";
-      } else if (selected) {
-        res.textContent = "Risposta errata. Riprova!";
-        res.className = "wrong";
+    function valutaQuiz() {
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+      let feedback = '';
+      let punteggio = 0;
+
+      if (q1 === 'magnetico') punteggio++;
+      if (q2 === 'no') punteggio++;
+
+      if (punteggio === 2) {
+        feedback = 'Ottimo! Tutte le risposte sono corrette! ✅';
+      } else if (punteggio === 1) {
+        feedback = 'Hai risposto correttamente a una domanda! 💡';
       } else {
-        res.textContent = "Seleziona una risposta.";
-        res.className = "";
+        feedback = 'Riprova! Le risposte non sono corrette. 🔄';
       }
+      document.getElementById('quiz-feedback').textContent = feedback;
     }
   </script>
 </body>
